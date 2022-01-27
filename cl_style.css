@@ -1,0 +1,32 @@
+.ContributionCalendar-day
+{
+  rx: 0;
+  ry: 0;
+  height: 10px;
+  width: 8px;
+}
+.ContributionCalendar-day[data-level="4"]{fill: #FFB000;}
+.ContributionCalendar-day[data-level="3"]{fill: #FFB000;opacity: 0.80;}
+.ContributionCalendar-day[data-level="2"]{fill: #FFB000;opacity: 0.60;}
+.ContributionCalendar-day[data-level="1"]{fill: #FFB000;opacity: 0.40;}
+.ContributionCalendar-day[data-level="0"]{fill: #FFB000;opacity: 0.15;}
+
+.ContributionCalendar-day[data-level]:hover
+{
+  rx: 0;
+  ry: 0;
+  height: 10px;
+  width: 8px;
+  cursor: pointer;
+  opacity: 1;
+  color: #41FF00;
+}
+
+.ContributionCalendar-label
+{
+  visibility: hidden;
+}
+
+html{background-color: black;}
+
+
