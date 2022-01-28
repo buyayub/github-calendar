@@ -17,8 +17,7 @@ def cal_raw(user):
 
     return cal
 
-
-test = '<svg width="100" height="100"><g transform="translate(10,20)" data-test="4"><rect height="10px" width="10px" /></g></svg>'
+#test = '<svg width="100" height="100"><g transform="translate(10,20)" data-test="4"><rect height="10px" width="10px" /></g></svg>'
 
 class calParser(HTMLParser):
     # handles calendar stuff
@@ -43,21 +42,24 @@ class calParser(HTMLParser):
     def handle_endtag(self, tag):
         self.cal_struct.append(tag)
 
-parser = calParser()
-parser.feed(test)
-cal = parser.cal_struct
-
-'''
-def cal_strip(cal):
-    # strips out all the extra calendar stuff except important data
+def cal_strip(cal, attr):
     for element in cal:
-        if len(element) > 1:
-            for i in range(element[1:]):
-                if element[i][0] not in ['width', 'height', 'x', 'y', 'class', 'data-count', 'data-level']:
-                    element.remove(i)
-                 
-'''       
-                
+        if isinstance(element, list):
+            for i in element:
+                if isinstance(i , tuple):
+                    if i[0] == attr:
+                        element.remove(i)
+    return cal  
+
+cal_raw = cal_raw(user)
+'''
+parser = calParser()
+parser.feed(cal_raw)
+cal = parser.cal_struct
+cal = cal_strip(cal, 'rx')
+cal = cal_strip(cal, 'ry')
+'''
+print(cal_raw)
 
     
 #def cal_json(cal_raw):
